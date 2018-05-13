@@ -1,0 +1,10 @@
+# editor config
+*.DS_Store
+.vscode/
+.idea/*
+
+# npm packages
+node_modules
+
+# build file
+dist/*
