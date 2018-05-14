@@ -1,29 +1,35 @@
 import Element from './element'
 
-function _clip(element, lines) {
-  return element.children.reverse().some(child => {
-    if (child.type === 1) {
-      if (_clip(child, lines)) return true
-    }
+export default class Cliper {
+  constructor(el, options = {}) {
+    el.style.cssText += 'word-wrap:break-word'
 
-    if (child.type === 3) {
-      if (child.clipText(lines)) return true
-    }
+    const { sign = '...' } = options
+    const lines = options.lines || options || 1
+    const element = new Element(el, null, sign)
 
-    element.removeChild(child)
+    this._element = element
+    this._lines = lines
+    this._need_ellipsis = element.root.getScrollHeight() > element.root.getMaxHeight(lines)
+  }
 
-    return false
-  })
-}
+  clip(element = this._element) {
+    const { _need_ellipsis, _lines } = this
 
-export default function (el, options = {}) {
-  const { sign = '...' } = options
-  const lines = options.lines || options || 1
+    if (!_need_ellipsis) return false
 
-  el.style.cssText += 'word-wrap:break-word'
+    return element.children.reverse().some(child => {
+      if (child.type === 1) {
+        if (this.clip(child)) return true
+      }
 
-  const element = new Element(el, null, sign)
-  const need_ellipsis = element.root.getScrollHeight() > element.root.getMaxHeight(lines)
+      if (child.type === 3) {
+        if (child.clipText(_lines)) return true
+      }
 
-  if (need_ellipsis) _clip(element, lines)
+      element.removeChild(child)
+
+      return false
+    })
+  }
 }
