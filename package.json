@@ -1,6 +1,6 @@
 {
   "name": "textcliper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Multiple lines of text ellipsis",
   "main": "dist/textcliper.min.js",
   "directories": {
