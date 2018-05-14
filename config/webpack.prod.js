@@ -10,7 +10,8 @@ module.exports = merge(baseConfig, {
   },
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist'),
+    libraryTarget: "umd"
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
