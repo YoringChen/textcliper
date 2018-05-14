@@ -1,16 +1,18 @@
 import Cliper from './cliper'
 
-window.TextCliper = Cliper
+window.textclip = (el, options) => {
+  new Cliper(el, options).clip()
+}
 
 Cliper.install = function (Vue) {
-  Vue.directive('textcliper', {
+  Vue.directive('textclip', {
     inserted(el, binding) {
-      Cliper(el, binding.value)
+      new Cliper(el, binding.value).clip()
     }
   })
 
-  Vue.prototype.$textcliper = function (el, options) {
-    Cliper(el, options)
+  Vue.prototype.$textclip = function (el, options) {
+    new Cliper(el, options).clip()
   }
 }
 
