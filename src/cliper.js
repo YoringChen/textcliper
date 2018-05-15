@@ -51,7 +51,7 @@ export default class Cliper {
   clip(el = this.el, options, _init_data) {
     const init_data = _init_data || _init(el, options)
     const { need_ellipsis, lines, sign, element } = mergeConfig(this, init_data)
-    const ele = new Element(el, element, sign)
+    const ele = el instanceof Element ? el : new Element(el, element, sign)
 
     if (!need_ellipsis) return false
 
