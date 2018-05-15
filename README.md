@@ -20,7 +20,7 @@ JavaScript:
 ```javascript
   var app = document.getElementById('app')
 
-  textclip(app, 1)
+  TextCliper.clip(app, 1)
 ```
 Result:
 ```html
@@ -31,20 +31,27 @@ Result:
 
 ## Installing
 
+Using NPM:
 ```javascript
   npm install textcliper --save
 ```
 
+Using CDN:
+```html
+<script type="text/javascript" src="//unpkg.com/textcliper"></script>
+```
+
 ## API
 ```javascript
+  // using cdn
   var app = document.getElementById('app')
 
-  window.textclip(app, 1)
+  TextCliper.clip(app, 1)
 
-  // or
-
+  // or using npm
   import TextCliper from 'textcliper'
-  new TextCliper(app, 1).clip()
+
+  TextCliper.clip(app, 1)
 
   // or vue plugin, if you use Vue
   import TextCliper from 'textcliper'
@@ -57,7 +64,11 @@ Result:
   <div v-textclip="1"> Test Something ! <span>label</span><span>label2</span> </div>
 ```
 
-### textclip(ele, options [, lines]) / constructor(ele, options [, lines])
+### TextCliper
+
+a `TextCliper` instance
+
+### TextCliper.clip(ele, options [, lines])
 
 ``ele`` :  target dom element.
 
@@ -66,12 +77,6 @@ Result:
 ``options.lines``: specifies the number of rows to ellipsis.
 ``options.sign``: ellipsis symbol, the default is ``...``.
 
-### textcliper.clip()
-
-``textcliper``:  `TextCliper` instance
-
-``clip``:  `TextCliper` instance need to manual trigger clipping
-
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

@@ -1,21 +1,26 @@
-import Cliper from './cliper'
+import TextCliper from './cliper'
 
-window.textclip = (el, options) => {
-  new Cliper(el, options).clip()
-}
+// cliper instance
+const cliper = new TextCliper()
 
-Cliper.install = function (Vue) {
+// install in window
+cliper.TextCliper = TextCliper
+window.TextCliper = cliper
+
+// vue plugins
+cliper.install = function (Vue) {
   Vue.directive('textclip', {
     inserted(el, binding) {
-      new Cliper(el, binding.value).clip()
+      cliper.clip(el, binding.value)
     }
   })
 
-  Vue.prototype.$textclip = function (el, options) {
-    new Cliper(el, options).clip()
+  Vue.prototype.$textclip = (el, options) => {
+    cliper.clip(el, options)
   }
 }
 
-if (window.Vue) window.Vue.use(Cliper)
+// auto install, if vue in global
+if (window.Vue) window.Vue.use(TextCliper)
 
-export default Cliper
+export default cliper
