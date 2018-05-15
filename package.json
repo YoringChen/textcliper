@@ -13,7 +13,11 @@
   },
   "keywords": [
     "textcliper",
-    "textellipsis"
+    "text-ellipsis",
+    "line clamp",
+    "ellipsis",
+    "text",
+    "dom"
   ],
   "author": "yoring <joey_93@163.com>",
   "license": "MIT",
