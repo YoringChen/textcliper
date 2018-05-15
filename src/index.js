@@ -21,6 +21,6 @@ cliper.install = function (Vue) {
 }
 
 // auto install, if vue in global
-if (window.Vue) window.Vue.use(TextCliper)
+if (window.Vue) window.Vue.use(cliper)
 
 export default cliper
