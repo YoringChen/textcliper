@@ -18,6 +18,8 @@ export default class Element {
     const children = []
     const { root, sign } = this
 
+    if (!childNodes) return children
+
     while (children.length < childNodes.length) {
       children.push(new Element(childNodes[children.length], root, sign))
     }
