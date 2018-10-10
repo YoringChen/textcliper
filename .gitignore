@@ -1,10 +1,8 @@
-# editor config
-*.DS_Store
-.vscode/
-.idea/*
-
-# npm packages
+.DS_Store
 node_modules
-
-# build file
+*.log
+dist/vue.common.min.js
+test/*
+coverage
 dist/*
+.vscode

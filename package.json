@@ -1,15 +1,18 @@
 {
   "name": "textcliper",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Multiple lines of text ellipsis",
+  "private": true,
   "main": "dist/textcliper.min.js",
-  "directories": {
-    "example": "example"
-  },
+  "module": "dist/textcliper.min.js",
+  "unpkg": "dist/textcliper.min.js",
+  "files": [
+    "src/**/*.js",
+    "dist/**/*.js"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build/build.js",
-    "dev": "node build/dev.js"
+    "build": "webpack --config build/webpack.prod.conf.js",
+    "dev": "webpack-dev-server --config build/webpack.dev.conf.js --open"
   },
   "keywords": [
     "textcliper",
@@ -21,23 +24,42 @@
   ],
   "author": "yoring <joey_93@163.com>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cyh-93/textcliper.git"
-  },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
-    "eslint": "^4.8.0",
-    "eslint-config-airbnb-base": "^12.0.1",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-import": "^2.7.0",
-    "friendly-errors-webpack-plugin": "^1.6.1",
-    "html-webpack-plugin": "^2.30.1",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@commitlint/cli": "^7.2.0",
+    "@commitlint/config-conventional": "^7.1.2",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^0.1.19",
+    "commitlint": "^7.2.0",
+    "eslint": "^5.6.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-with-typescript": "^4.0.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-typescript": "^0.12.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.1.1",
+    "typescript": "^3.1.1",
+    "typescript-eslint-parser": "^20.0.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
