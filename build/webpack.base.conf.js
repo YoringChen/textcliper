@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.ts',
   output: {
-    filename: 'helloworld.js',
+    filename: 'textcliper.min.js',
     path: path.resolve(__dirname, '../dist')
   },
   plugins: [

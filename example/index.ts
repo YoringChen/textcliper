@@ -1,6 +1,6 @@
-import Say from '../src'
+import '../src'
 
-const say = new Say()
-
-/* eslint no-console: off */
-console.log(say.sayHelloWorld())
+/* eslint no-new: 'off' */
+new window.Vue({
+  el: '#app'
+})

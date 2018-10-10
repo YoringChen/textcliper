@@ -1,13 +1,27 @@
-class HelloWorld {
-  public msg: string
+import TextCliper, { CliperProperty } from './cliper'
 
-  public constructor (msg?: string) {
-    this.msg = msg || 'hello world'
-  }
+// cliper instance
+const cliper = new TextCliper()
 
-  public sayHelloWorld (): string {
-    return this.msg
+// install in window
+window.TextCliper = cliper
+
+// set Class prototype
+if (!(cliper as any).TextCliper) (cliper as any).TextCliper = TextCliper
+
+// vue plugins
+cliper.install = function (Vue): void {
+  Vue.directive('textclip', {
+    inserted (el: HTMLElement, binding: any): void {
+      cliper.clip(el, binding.value as CliperProperty)
+    }
+  })
+
+  Vue.prototype.$textclip = (el: HTMLElement, options: CliperProperty): void => {
+    cliper.clip(el, options)
   }
 }
 
-export default HelloWorld
+if (window.Vue) window.Vue.use(cliper)
+
+export default cliper

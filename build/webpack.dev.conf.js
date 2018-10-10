@@ -14,7 +14,8 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development'
+      title: 'Development',
+      template: './example/index.html'
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
