@@ -1,5 +1,10 @@
 import Element from './element'
 
+export interface CliperConfig {
+  lines?: number
+  sign?: string
+}
+
 const DEFAULT_CONFIG = {
   lines: 1,
   sign: '...'
@@ -21,7 +26,7 @@ export default class Cliper {
   protected _need_ellipsis!: boolean
   public TextCliper!: Cliper
 
-  public constructor (el?: HTMLElement, option?: CliperProperty) {
+  public constructor (el?: HTMLElement, option?: CliperConfig) {
     const { element, lines, sign, need_ellipsis } = this._init(el, option)
 
     if (!need_ellipsis) return
@@ -33,15 +38,15 @@ export default class Cliper {
     this._need_ellipsis = need_ellipsis
   }
 
-  protected _init (el?: HTMLElement, options?: CliperProperty): CliperProperty {
+  protected _init (el?: HTMLElement, options?: CliperConfig): CliperProperty {
     let sign: string = DEFAULT_CONFIG.sign
     let lines: number = DEFAULT_CONFIG.lines
     let element = null
     let need_ellipsis = false
 
     if (typeof options === 'object') {
-      sign = options.sign
-      lines = isNaN(+options) ? options.lines || DEFAULT_CONFIG.lines : +options
+      sign = options.sign || sign
+      lines = (isNaN(+options) ? options.lines : +options) || lines
     }
 
     if (el) {
@@ -71,7 +76,7 @@ export default class Cliper {
     return config
   }
 
-  public clip (target: HTMLElement | Element | null = this._element, options?: CliperProperty, _init_data?: CliperProperty): boolean {
+  public clip (target: HTMLElement | Element | null = this._element, options?: CliperConfig, _init_data?: CliperProperty): boolean {
     const _el = target instanceof Element ? target.el : target
     const init_data = _init_data || this._init(_el as HTMLElement, options)
     const { need_ellipsis, lines, sign, element } = this._mergeConfig(init_data)

@@ -1,4 +1,4 @@
-import TextCliper, { CliperProperty } from './cliper'
+import TextCliper, { CliperConfig } from './cliper'
 
 // cliper instance
 const cliper = new TextCliper()
@@ -13,11 +13,11 @@ if (!(cliper as any).TextCliper) (cliper as any).TextCliper = TextCliper
 cliper.install = function (Vue): void {
   Vue.directive('textclip', {
     inserted (el: HTMLElement, binding: any): void {
-      cliper.clip(el, binding.value as CliperProperty)
+      cliper.clip(el, binding.value as CliperConfig)
     }
   })
 
-  Vue.prototype.$textclip = (el: HTMLElement, options: CliperProperty): void => {
+  Vue.prototype.$textclip = (el: HTMLElement, options: CliperConfig): void => {
     cliper.clip(el, options)
   }
 }
