@@ -74,7 +74,8 @@ export default class Cliper {
     return config
   }
 
-  public clip (target: HTMLElement | Element | null = this._element, options?: CliperConfig, _init_data?: CliperProperty): boolean {
+  protected _clip (target: HTMLElement | Element | null, options?: CliperConfig, _init_data?: CliperProperty): boolean {
+    target = target || this._element
     const _el = target instanceof Element ? target.el : target
     const init_data = _init_data || this._init(_el as HTMLElement, options)
     const { need_ellipsis, lines, sign, element } = this._mergeConfig(init_data)
@@ -84,7 +85,7 @@ export default class Cliper {
 
     return ele.children.reverse().some((child: Element): boolean => {
       if (child.type === 1) {
-        if (this.clip(child, options, init_data)) return true
+        if (this._clip(child, options, init_data)) return true
       }
 
       if (child.type === 3) {
@@ -95,6 +96,14 @@ export default class Cliper {
 
       return false
     })
+  }
+
+  public clip (target?: HTMLElement | Element | CliperConfig, options?: CliperConfig): boolean {
+    if (target instanceof HTMLElement || target instanceof Element) {
+      return this._clip(target, options)
+    }
+
+    return this._clip(null, options)
   }
 
   public install (Vue: any): void {}
