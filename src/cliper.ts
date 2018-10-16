@@ -29,8 +29,6 @@ export default class Cliper {
   public constructor (el?: HTMLElement, option?: CliperConfig) {
     const { element, lines, sign, need_ellipsis } = this._init(el, option)
 
-    if (!need_ellipsis) return
-
     this._el = el
     this._element = element
     this._lines = lines
