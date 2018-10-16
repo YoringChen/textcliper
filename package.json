@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "build": "webpack --config build/webpack.prod.conf.js",
-    "dev": "webpack-dev-server --config build/webpack.dev.conf.js --open"
+    "dev": "webpack-dev-server --config build/webpack.dev.conf.js --open",
+    "test": "jest"
   },
   "keywords": [
     "textcliper",
@@ -33,6 +34,7 @@
     "@babel/preset-typescript": "^7.1.0",
     "@commitlint/cli": "^7.2.0",
     "@commitlint/config-conventional": "^7.1.2",
+    "@types/jest": "^23.3.5",
     "babel-loader": "^8.0.4",
     "clean-webpack-plugin": "^0.1.19",
     "commitlint": "^7.2.0",
@@ -47,8 +49,11 @@
     "eslint-plugin-typescript": "^0.12.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.1.1",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.4",
     "typescript": "^3.1.1",
     "typescript-eslint-parser": "^20.0.0",
+    "vue": "^2.5.17",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9",

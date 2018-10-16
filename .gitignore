@@ -2,7 +2,6 @@
 node_modules
 *.log
 dist/vue.common.min.js
-test/*
 coverage
 dist/*
 .vscode
