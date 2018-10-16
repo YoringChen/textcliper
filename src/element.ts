@@ -22,7 +22,7 @@ export default class Element {
     this.children = this.initChildren(el.childNodes)
     this._root_width = this.getRootWidth(this.root)
     this._font_size = parseInt(this.getStyle('fontSize'), 10)
-    this._word_count = this._root_width / this._font_size
+    this._word_count = Math.ceil(this._root_width / this._font_size)
     this._line_height = this.getLineHeight()
   }
 
