@@ -4,7 +4,7 @@ beforeEach((): void => {
   Element.prototype.getBoundingClientRect = jest.fn((): any => {
     return {
       width: 200,
-      height: 120,
+      height: 22,
       top: 0,
       left: 0,
       bottom: 0,
@@ -76,11 +76,55 @@ test('checkout getStyle function', (): void => {
 })
 
 test('checkout getRootWidth function', (): void => {
+  const div = document.createElement('div')
+  const element = new _Element(div, null, '...')
+
+  expect(element['getRootWidth']()).toBe(200)
 })
 
-test('checkout getLineHeight function', (): void => {})
-test('checkout getDefaultLineHeight function', (): void => {})
-test('checkout getScrollHeight function', (): void => {})
-test('checkout getMaxHeight function', (): void => {})
-test('checkout clipText function', (): void => {})
-test('checkout removeChild function', (): void => {})
+test('checkout getLineHeight function', (): void => {
+  const div = document.createElement('div')
+  const element = new _Element(div, null, '...')
+
+  expect(element['getLineHeight']()).toBe(16)
+})
+
+test('checkout getDefaultLineHeight function', (): void => {
+  const div = document.createElement('div')
+  const element = new _Element(div, null, '...')
+
+  expect(element['getDefaultLineHeight']()).toBe(16.8)
+})
+
+test('checkout getScrollHeight function', (): void => {
+  const div = document.createElement('div')
+  const element = new _Element(div, null, '...')
+
+  expect(element['getScrollHeight']()).toBe(0)
+})
+
+test('checkout getMaxHeight function', (): void => {
+  const div = document.createElement('div')
+  const element = new _Element(div, null, '...')
+
+  expect(element['getMaxHeight'](2)).toBe(44)
+})
+
+test('checkout clipText function', (): void => {
+  const div = document.createElement('div')
+  div.textContent = 'test test'
+  const element = new _Element(div, null, '...')
+
+  expect(element['clipText'](1)).toBe(true)
+  expect(element.el.textContent).toBe('test test...')
+})
+
+test('checkout removeChild function', (): void => {
+  const div = document.createElement('div')
+  const p = document.createElement('p')
+  p.textContent = 'test test'
+  div.appendChild(p)
+  const element = new _Element(div, null, '...')
+
+  expect(element['removeChild'](element.children[0])).toBe(true)
+})
