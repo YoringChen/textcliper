@@ -20,7 +20,7 @@ export default class Element {
     this.type = el.nodeType
     this.text = el.textContent
     this.children = this.initChildren(el.childNodes)
-    this._root_width = this.getRootWidth(this.root)
+    this._root_width = this.getRootWidth()
     this._font_size = parseInt(this.getStyle('fontSize'), 10)
     this._word_count = Math.ceil(this._root_width / this._font_size)
     this._line_height = this.getLineHeight()
@@ -52,7 +52,9 @@ export default class Element {
     return (styles as any)[property] || ''
   }
 
-  protected getRootWidth (root: Element | null): number {
+  protected getRootWidth (): number {
+    const { root } = this
+
     if (!root) return 0
 
     const el = root.el
