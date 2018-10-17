@@ -122,7 +122,11 @@ export default class Element {
   }
 
   public removeChild (child: Element): boolean {
-    if (child.type === 1) this.el.removeChild(child.el)
+    if (child.type === 1) {
+      this.el.removeChild(child.el)
+
+      return true
+    }
 
     return false
   }
