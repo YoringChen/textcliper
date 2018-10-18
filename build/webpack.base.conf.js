@@ -2,13 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.ts',
-  output: {
-    filename: 'textcliper.min.js',
-    path: path.resolve(__dirname, '../dist')
-  },
-  plugins: [
-  ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json']
   },

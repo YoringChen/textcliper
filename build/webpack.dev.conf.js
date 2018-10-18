@@ -7,6 +7,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = merge(baseConfig, {
   mode: 'development',
   entry: './example/index.ts',
+  output: {
+    filename: 'textcliper.min.js',
+    path: path.resolve(__dirname, '../dist')
+  },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: './dist',

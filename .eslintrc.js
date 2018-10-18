@@ -4,6 +4,10 @@ module.exports = {
   'plugins': [
     'typescript'
   ],
+  "env": {
+    "browser": true,
+    "mocha": true,
+  },
   'extends': 'eslint-config-standard-with-typescript',
   'rules': {
     'semi': 'off',
