@@ -3,9 +3,6 @@ import TextCliper, { CliperConfig } from './cliper'
 // cliper instance
 const cliper = new TextCliper()
 
-// install in window
-window.TextCliper = cliper
-
 // set Class prototype
 if (!(cliper as any).TextCliper) (cliper as any).TextCliper = TextCliper
 
